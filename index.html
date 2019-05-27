@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>number baseball game</title>
 </head>
 <body>
-    
+   <h1>숫자 야구 게임</h1>
+    <p>
+        <li>숫자는 3자리이다</li>
+        <li>사용되는 숫자는 0에서 9까지 서로 다른 숫자이다</li>
+        <li>숫자는 맞지만 위치가 틀렸을 때는 볼</li>
+        <li>숫자와 위치가 전부 맞으면 스트라이크</li>
+        <li>숫자와 위치가 전부 틀리면 아웃</li>
+        <li>숫자는 중복되지 않는다</li>
+    </p>
+    <div class="form"> 
+        <label for="guessField">Enter a guess: </label>
+        <input type="text" id="guessField" class="guessField"> 
+        <input type="submit" value="Submit guess" class="guessSubmit"> 
+    </div>
+     <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+    </div>
+    <img src="bg.png" class="bg">
 </body>
 </html>
