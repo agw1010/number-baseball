@@ -30,12 +30,13 @@ function checkGuess() {
     if (strike === 3) {
         strikeOrBall.textContent = `축하합니다 ${guessCount}번에 맞추셨습니다`;
         setGameOver();
-    } else if (guessCount = 9) {
+    } else if (guessCount === 9) {
         strikeOrBall.textContent = '!!!GAME OVER!!!';
         setGameOver();
     } else {
         strikeOrBall.textContent = `strike : ${strike} ball : ${ball}`
     }
+    guessCount++;
     guessField.value = '';
     guessField.focus();
 }
@@ -67,6 +68,11 @@ function resetGame() {
 
     lastResult.style.backgroundColor = 'white';
 
+    let number = [];
+    for (let i = 0; i < 3; i++) {
+        let select = Math.floor(Math.random() * list.length);
+        number[i] = list.splice(select, 1)[0];
+    }
     strike = 0;
     ball = 0;
 }
