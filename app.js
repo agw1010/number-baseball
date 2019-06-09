@@ -4,13 +4,14 @@ for (let i = 0; i < 3; i++) {
     let select = Math.floor(Math.random() * list.length);
     number[i] = list.splice(select, 1)[0];
 }
-const strikeOrBall = document.querySelector("strikeOrBall");
+const strikeOrBall = document.querySelector(".strikeOrBall");
 const guessField = document.querySelector(".guessField");
 const guessSubmit = document.querySelector(".guessSubmit");
 let strike = 0;
 let ball = 0;
 let guessCount = 1;
 let resetButton;
+let chanse = 8;
 
 function checkGuess() {
     let userGuess = guessField.value;
@@ -31,12 +32,15 @@ function checkGuess() {
         strikeOrBall.textContent = `축하합니다 ${guessCount}번에 맞추셨습니다`;
         setGameOver();
     } else if (guessCount === 9) {
-        strikeOrBall.textContent = '!!!GAME OVER!!!';
+        strikeOrBall.textContent = `!!!GAME OVER!!! 정답은 ${number} 입니다`;
         setGameOver();
     } else {
-        strikeOrBall.textContent = `strike : ${strike} ball : ${ball}`
+        strikeOrBall.textContent = `strike : ${strike} ball : ${ball} 기회가 ${chanse}번 남았습니다`
+        strike = 0;
+        ball = 0;
     }
     guessCount++;
+    chanse--;
     guessField.value = '';
     guessField.focus();
 }
@@ -46,7 +50,7 @@ function setGameOver() {
     guessField.disabled = true;
     guessSubmit.disabled = true;
     resetButton = document.createElement('button');
-    resetButton.textContent = 'Start new game';
+    resetButton.textContent = '다시하기';
     document.body.appendChild(resetButton);
     resetButton.addEventListener('click', resetGame);
 }
@@ -65,8 +69,6 @@ function resetGame() {
     guessSubmit.disabled = false;
     guessField.value = '';
     guessField.focus();
-
-    lastResult.style.backgroundColor = 'white';
 
     let number = [];
     for (let i = 0; i < 3; i++) {
