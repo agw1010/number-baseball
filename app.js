@@ -77,4 +77,5 @@ function resetGame() {
     }
     strike = 0;
     ball = 0;
+    chanse =8;
 }
