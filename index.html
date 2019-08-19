@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
     <title>숫자야구</title>
-</head>
-<body>
-   <h1>숫자야구</h1>
-    <p>
+  </head>
+  <body>
+    <h1>숫자야구</h1>
+    <div class="form">
+      <label for="guessField">숫자를 입력하세요: </label>
+      <input type="text" class="guessField" autocomplete="off" />
+      <input type="submit" value="☑️" class="guessSubmit" />
+    </div>
+    <div class="resultParas">
+      <p class="strikeOrBall"></p>
+    </div>
+    <div class="rules">
+      <p>
         <li>숫자는 3자리이다</li>
         <li>사용되는 숫자는 0에서 9까지 서로 다른 숫자이다</li>
         <li>숫자는 맞지만 위치가 틀렸을 때는 볼</li>
         <li>숫자와 위치가 전부 맞으면 스트라이크</li>
         <li>숫자는 중복되지 않는다</li>
         <li>기회는 9번</li>
-    </p>
-    <div class="form"> 
-        <label for="guessField">숫자를 입력하세요: </label>
-        <input type="text" class="guessField"> 
-        <input type="submit" value="Submit guess" class="guessSubmit"> 
+      </p>
     </div>
-     <div class="resultParas">
-        <p class="strikeOrBall"></p>
-    </div>
-    <img src="bg.png" class="bg">
-</body>
-<script src="app.js"></script>
+  </body>
+  <script src="app.js"></script>
 </html>
