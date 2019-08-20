@@ -10,6 +10,8 @@ const form = document.querySelector(".form");
 const strikeOrBall = document.querySelector(".strikeOrBall");
 const guessField = document.querySelector(".guessField");
 const guessSubmit = document.querySelector(".guessSubmit");
+const errorField = document.querySelector(".error-field");
+const reset = document.querySelector(".reset");
 let strike = 0;
 let ball = 0;
 let guessCount = 1;
@@ -32,7 +34,7 @@ function checkGuess() {
     }
   }
   if (strike === 3) {
-    strikeOrBall.textContent = `축하합니다 ${guessCount}번에 맞추셨습니다`;
+    strikeOrBall.textContent = `축하합니다 ${guessCount}번만에 맞추셨습니다`;
     setGameOver();
   } else if (guessCount === 9) {
     strikeOrBall.textContent = `!!!GAME OVER!!! 정답은 ${number} 입니다`;
@@ -41,9 +43,9 @@ function checkGuess() {
     strikeOrBall.textContent = `strike : ${strike} ball : ${ball} 기회가 ${chanse}번 남았습니다`;
     strike = 0;
     ball = 0;
+    guessCount++;
+    chanse--;
   }
-  guessCount++;
-  chanse--;
   guessField.value = "";
   guessField.focus();
 }
@@ -54,7 +56,7 @@ function setGameOver() {
   guessSubmit.disabled = true;
   resetButton = document.createElement("button");
   resetButton.textContent = "🔄";
-  form.appendChild(resetButton);
+  reset.appendChild(resetButton);
   resetButton.addEventListener("click", resetGame);
 }
 
