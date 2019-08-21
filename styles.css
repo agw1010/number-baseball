@@ -19,8 +19,12 @@ h1 {
   margin: 70px 0px 20px 0px;
 }
 
+.error-field {
+  margin: 30px 0px 5px 0px;
+  height: 16px;
+}
+
 .form {
-  margin: 30px;
   font-size: 30px;
   display: flex;
   align-items: center;

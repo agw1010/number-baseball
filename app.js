@@ -21,6 +21,10 @@ let chanse = 8;
 function checkGuess() {
   let userGuess = guessField.value;
   let userGuessArray = userGuess.split("");
+  if (userGuessArray.length !== 3) {
+    document.body.style.backgroundColor = "rgb(189,87,87)";
+    form.style.animation = "shake 0.5s ease";
+  }
   for (let j = 0; j < 3; j++) {
     for (let k = 0; k < 3; k++) {
       if (number[j] == userGuessArray[k]) {
@@ -33,19 +37,32 @@ function checkGuess() {
       }
     }
   }
-  if (strike === 3) {
+  if (userGuessArray.length !== 3) {
+    document.body.style.backgroundColor = "rgb(189,87,87)";
+    form.style.animation = "shake 0.5s ease";
+    errorField.innerText = "3자리 숫자를 입력해야합니다";
+  } else if (strike === 3) {
     strikeOrBall.textContent = `축하합니다 ${guessCount}번만에 맞추셨습니다`;
     setGameOver();
+    errorField.innerText = "";
+    document.body.style.backgroundColor = "rgb(87, 189, 130)";
   } else if (guessCount === 9) {
     strikeOrBall.textContent = `!!!GAME OVER!!! 정답은 ${number} 입니다`;
     setGameOver();
+    errorField.innerText = "";
+    document.body.style.backgroundColor = "rgb(87, 189, 130)";
   } else {
     strikeOrBall.textContent = `strike : ${strike} ball : ${ball} 기회가 ${chanse}번 남았습니다`;
     strike = 0;
     ball = 0;
     guessCount++;
     chanse--;
+    document.body.style.backgroundColor = "rgb(87, 189, 130)";
+    errorField.innerText = "";
   }
+  form.addEventListener("animationend", () => {
+    form.style.animation = "";
+  });
   guessField.value = "";
   guessField.focus();
 }
